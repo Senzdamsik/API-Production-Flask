@@ -12,7 +12,7 @@ app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 
 mysql.init_app(app)
 
-@app.route('/users')
+@app.route('/listing')
 def get():
 		batasx = request.args.get('batas')
 		cur = mysql.connect().cursor()
@@ -45,13 +45,14 @@ def get():
 		'group by nama_kelompok_data order by date_modified desc ' +
 		' limit '+str(batasx)+", 5")
 
-		hasil = cur.fetchall()
-		print(hasil[0])
+		keluaran = cur.fetchall()
 
 		
 
 
-		hasil_json = jsonify({'Mentah' : hasil})
+
+		
+		hasil_json = jsonify({'Mentah' : keluaran})
 		return hasil_json
 
 if __name__ == '__main__':
@@ -82,3 +83,5 @@ if __name__ == '__main__':
 # @app.route("/lala")
 # def home():
 #     return 'Hello, Flask!'
+
+#http://127.0.0.1:5000/listing?batas=0
