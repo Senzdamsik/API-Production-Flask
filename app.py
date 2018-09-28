@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from flaskext.mysql import MySQL
 import pandas as pd
+import numpy as np
 
 app = Flask(__name__)
 mysql = MySQL()
@@ -51,7 +52,7 @@ def get():
 
 	link = []
 	for a in range(len(keluaran)):
-		link.append(url+"-".join(keluaran[a][12].split(" ")))
+		link.append(url+"+".join(keluaran[a][12].split(" ")))
 
 	
 
@@ -192,11 +193,8 @@ def download():
 	datax = request.args.get('data')
 	rowx = request.args.get('row')
 
-	print(rowx)
 
-
-
-	data3 = " ".join(datax.split("-"))
+	data3 = " ".join(datax.split("+"))
 	data4 = str("'"+data3+"'")
 
 	cur = mysql.connect().cursor()
@@ -278,11 +276,55 @@ def download():
 
 	df4 = pd.concat(tampung_sementara)
 
-	
+#####################################################################################################
+
+	try:
+		split_garis = rowx.split("|")
+	except:
+		return df4.to_csv("tesflask.csv", index = False)
+
+	kumpulan1 = []
+	kumpulan2 = []
+	for v in split_garis:
+		split_colon = v.split(":")
+		split_colon_kiri = " ".join(split_colon[0].split("+"))
+
+		if split_colon_kiri == "Waktu":
+			split_colon_kanan =  split_colon[1]
+			kumpulan1.append(split_colon_kiri)
+			kumpulan1.append(split_colon_kanan)
+			kumpulan2.append(kumpulan1)
+			kumpulan1 = []
+
+		else:
+			split_colon_kanan = " ".join(split_colon[1].split("+"))
+			kumpulan1.append(split_colon_kiri)
+			kumpulan1.append(split_colon_kanan)
+			kumpulan2.append(kumpulan1)
+			kumpulan1 = []
+
+	if len(split_garis) == 1:
+		tes = df4[kumpulan2[0][0]] == kumpulan2[0][1] 
+		df5 = df4[tes]
+
+	elif len(split_garis) == 2:
+		# sama kolom
+		if kumpulan2[0][0] == kumpulan2[1][0]: 
+			tes = (df4[kumpulan2[0][0]] == kumpulan2[0][1]) | (df4[kumpulan2[0][0]] == kumpulan2[1][1]) 
+
+		# beda kolom	
+		elif kumpulan2[0][0] != kumpulan2[1][0]: 
+			tes = (df4[kumpulan2[0][0]] == kumpulan2[0][1]) & (df4[kumpulan2[1][0]] == kumpulan2[1][1]) 
+			
+		df5 = df4[tes]	
+
+	#gabungan sama dan beda kolom belum selesai
 
 
-	return df4.to_csv("tesflask.csv", index = False) 
-	# return df4 
+
+
+	return df5.to_csv("tesflask.csv", index = False) 
+	# jadiin json
 
 
 if __name__ == '__main__':
