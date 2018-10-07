@@ -303,7 +303,10 @@ def download():
 			kumpulan2.append(kumpulan1)
 			kumpulan1 = []
 
-	
+	#kumpulan2 = [['Provinsi', 'Aceh'], ['Provinsi', 'Banten']]
+	#kumpulan2 = [[u'Provinsi', u'Aceh'], 
+	# 			  [u'Nama Data', u'Persentase Penduduk Usia 5 Tahun ke Atas yang Pernah Mengakses Internet dalam 3 Bulan Terakhir Menurut Provinsi Tanpa Jenjang Pendidikan']]
+
 	nama_data = []
 	waktu = []
 	nilai = []
@@ -328,6 +331,7 @@ def download():
 			negara.append(kumpulan2[w])
 		elif kumpulan2[w][0] == "Provinsi":
 			provinsi.append(kumpulan2[w])
+		#provinsi = [["Provinsi", "Aceh"], ["Provinsi", "Banten"]]
 		elif kumpulan2[w][0] == "Kota":
 			kota.append(kumpulan2[w])
 		elif kumpulan2[w][0] == "Satuan":
@@ -335,7 +339,7 @@ def download():
 
 
 	simpan4 = []
-	simpan5 = [] 
+	simpan_provinsi = [] 
 	for z in range(len(provinsi)):
 		simpan1 = provinsi[z][0] 
 		simpan2 = "==" 
@@ -343,30 +347,90 @@ def download():
 		simpan4.append(simpan1)
 		simpan4.append(simpan2)
 		simpan4.append(simpan3)
-
 		block = "(df4["+"'"+simpan4[0]+"'"+"]"+simpan4[1]+"'"+simpan4[2]+"')"
 		simpan4 = []
+		simpan_provinsi.append(block)
+		#simpan_provinsi = ["(df4['Provinsi']=='Aceh')", "(df4['Provinsi']=='Banten')"]
+	
+	simpan6 = []
+	simpan_nama_data = [] 
+	for z in range(len(nama_data)):
+		simpan1 = nama_data[z][0] 
+		simpan2 = "==" 
+		simpan3 = nama_data[z][1]
+		simpan6.append(simpan1)
+		simpan6.append(simpan2)
+		simpan6.append(simpan3)
+		block = "(df4["+"'"+simpan6[0]+"'"+"]"+simpan6[1]+"'"+simpan6[2]+"')"
+		simpan6 = []
+		simpan_nama_data.append(block)
+		#simpan_nama_data = #["(df4['Nama Data']=='Persentase Penduduk Usia 5 Tahun ke Atas yang Pernah Mengakses Internet dalam 3 Bulan Terakhir Menurut Provinsi Tanpa Jenjang Pendidikan')", 
+							# "(df4['Nama Data']=='Persentase Penduduk Usia 5 Tahun ke Atas yang Pernah Mengakses Internet dalam 3 Bulan Terakhir Menurut Provinsi dengan Jenjang Pendidikan SD')"]
 
-		simpan5.append(block)
+		
 
-
-	jumlah = len(simpan5)
+	jumlah = len(split_garis)
 
 	if jumlah == 1:
-		pertama = simpan5[0]
-		pertamax = pertama[1:-1]
-		lala = eval(pertamax)
-		df5 = df4[lala]
+		if simpan_provinsi:
+			pertama = simpan_provinsi[0]
+			lala = eval(pertama)
+			df5 = df4[lala]
+		elif simpan_nama_data:
+			pertama = simpan_nama_data[0]
+			lala = eval(pertama)
+			df5 = df4[lala]
 
 
 	elif jumlah != 1:
-		gabung = "|".join(simpan5)
-		lala = eval(gabung)
-		df5 = df4[lala]
 
+
+		def fungsi_or():
+			if simpan_provinsi:
+				gabung = "|".join(simpan_provinsi)
+				lala = eval(gabung)
+				df5 = df4[lala]
+			elif simpan_nama_data:
+				gabung = "|".join(simpan_nama_data)
+				lala = eval(gabung)
+				df5 = df4[lala]
+			return df5
+
+		def fungsi_and():
+			if simpan_provinsi and simpan_nama_data:
+				
+				gabung1 = "|".join(simpan_provinsi)
+				gabung2 = "("+gabung1+")"
+
+				gabung3 = "|".join(simpan_nama_data)
+				gabung4 = "("+gabung3+")"
+
+				gabung5 = gabung2+"&"+gabung4
+
+				lala = eval(gabung5)
+				df5 = df4[lala]
+
+			return df5
+
+
+
+		cekBeda = True
+		for y in range(0, len(kumpulan2)):
+			if kumpulan2[y][0] != kumpulan2[y-1][0]:
+				cekBeda = False
+
+		if cekBeda == True:
+			df5 = fungsi_or()
+		else:
+			df5 = fungsi_and()
 
 		
+		
+	
+
+
 	return df5.to_csv("tesflask.csv", index = False)
+	# return simpan_provinsi
 
 	# jadiin json
 
@@ -379,24 +443,4 @@ if __name__ == '__main__':
 
 
 
-
-
-
-
-
-# if __name__ == '__main__':
-#     app.run()
-
-
-# @app.route("/lala")
-# def home():
-#     return 'Hello, Flask!'
-
-#http://127.0.0.1:5000/listing?batas=0
-
-
-	# for (z = 0; z < 10; z+1){
-	# 	simpan1 = df4[provinsi[z][0]] == provinsi[z][1]
-	# 	simpan2 = simpan1 + simpan2
-	# }:
 		
