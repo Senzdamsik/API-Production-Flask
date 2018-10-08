@@ -367,7 +367,98 @@ def download():
 		#simpan_nama_data = #["(df4['Nama Data']=='Persentase Penduduk Usia 5 Tahun ke Atas yang Pernah Mengakses Internet dalam 3 Bulan Terakhir Menurut Provinsi Tanpa Jenjang Pendidikan')", 
 							# "(df4['Nama Data']=='Persentase Penduduk Usia 5 Tahun ke Atas yang Pernah Mengakses Internet dalam 3 Bulan Terakhir Menurut Provinsi dengan Jenjang Pendidikan SD')"]
 
-		
+	simpan7 = []
+	simpan_waktu = [] 
+	for z in range(len(waktu)):
+		simpan1 = waktu[z][0] 
+		simpan2 = "==" 
+		simpan3 = waktu[z][1]
+		simpan7.append(simpan1)
+		simpan7.append(simpan2)
+		simpan7.append(simpan3)
+		block = "(df4["+"'"+simpan7[0]+"'"+"]"+simpan7[1]+"'"+simpan7[2]+"')"
+		simpan7 = []
+		simpan_waktu.append(block)
+
+	simpan8 = []
+	simpan_nilai = [] 
+	for z in range(len(nilai)):
+		simpan1 = nilai[z][0] 
+		simpan2 = "==" 
+		simpan3 = nilai[z][1]
+		simpan8.append(simpan1)
+		simpan8.append(simpan2)
+		simpan8.append(simpan3)
+		block = "(df4["+"'"+simpan8[0]+"'"+"]"+simpan8[1]+"'"+simpan8[2]+"')"
+		simpan8 = []
+		simpan_nilai.append(block)
+
+	simpan9 = []
+	simpan_negara = [] 
+	for z in range(len(negara)):
+		simpan1 = negara[z][0] 
+		simpan2 = "==" 
+		simpan3 = negara[z][1]
+		simpan9.append(simpan1)
+		simpan9.append(simpan2)
+		simpan9.append(simpan3)
+		block = "(df4["+"'"+simpan9[0]+"'"+"]"+simpan9[1]+"'"+simpan9[2]+"')"
+		simpan9 = []
+		simpan_negara.append(block)
+
+	#batas isinya ga muncul (kefilter habis)
+	simpan10 = []
+	simpan_satuan = [] 
+	for z in range(len(satuan)):
+		simpan1 = satuan[z][0] 
+		simpan2 = "==" 
+		simpan3 = satuan[z][1]
+		simpan10.append(simpan1)
+		simpan10.append(simpan2)
+		simpan10.append(simpan3)
+		block = "(df4["+"'"+simpan10[0]+"'"+"]"+simpan10[1]+"'"+simpan10[2]+"')"
+		simpan10 = []
+		simpan_satuan.append(block)
+
+	simpan11 = []
+	simpan_nama_produk = [] 
+	for z in range(len(nama_produk)):
+		simpan1 = nama_produk[z][0] 
+		simpan2 = "==" 
+		simpan3 = nama_produk[z][1]
+		simpan11.append(simpan1)
+		simpan11.append(simpan2)
+		simpan11.append(simpan3)
+		block = "(df4["+"'"+simpan11[0]+"'"+"]"+simpan11[1]+"'"+simpan11[2]+"')"
+		simpan11 = []
+		simpan_nama_produk.append(block)
+
+	simpan12 = []
+	simpan_item = [] 
+	for z in range(len(item)):
+		simpan1 = item[z][0] 
+		simpan2 = "==" 
+		simpan3 = item[z][1]
+		simpan12.append(simpan1)
+		simpan12.append(simpan2)
+		simpan12.append(simpan3)
+		block = "(df4["+"'"+simpan12[0]+"'"+"]"+simpan12[1]+"'"+simpan12[2]+"')"
+		simpan12 = []
+		simpan_nama_produk.append(block)
+
+	simpan13 = []
+	simpan_kota = [] 
+	for z in range(len(kota)):
+		simpan1 = kota[z][0] 
+		simpan2 = "==" 
+		simpan3 = kota[z][1]
+		simpan13.append(simpan1)
+		simpan13.append(simpan2)
+		simpan13.append(simpan3)
+		block = "(df4["+"'"+simpan13[0]+"'"+"]"+simpan13[1]+"'"+simpan13[2]+"')"
+		simpan13 = []
+		simpan_kota.append(block)
+
 
 	jumlah = len(split_garis)
 
@@ -380,7 +471,35 @@ def download():
 			pertama = simpan_nama_data[0]
 			lala = eval(pertama)
 			df5 = df4[lala]
+		elif simpan_waktu:
+			pertama = simpan_waktu[0]
+			lala = eval(pertama)
+			df5 = df4[lala]
+		elif simpan_nilai:
+			pertama = simpan_nilai[0]
+			lala = eval(pertama)
+			df5 = df4[lala]
+		elif simpan_negara:
+			pertama = simpan_negara[0]
+			lala = eval(pertama)
+			df5 = df4[lala]
+		elif simpan_satuan:
+			pertama = simpan_satuan[0]
+			lala = eval(pertama)
+			df5 = df4[lala]
+		elif simpan_nama_produk:
+			pertama = simpan_nama_produk[0]
+			lala = eval(pertama)
+			df5 = df4[lala]
+		elif simpan_item:
+			pertama = simpan_item[0]
+			lala = eval(pertama)
+			df5 = df4[lala]
 
+		elif simpan_kota:
+			pertama = simpan_kota[0]
+			lala = eval(pertama)
+			df5 = df4[lala]
 
 	elif jumlah != 1:
 
@@ -394,24 +513,110 @@ def download():
 				gabung = "|".join(simpan_nama_data)
 				lala = eval(gabung)
 				df5 = df4[lala]
-			return df5
+			elif simpan_waktu:
+				gabung = "|".join(simpan_waktu)
+				lala = eval(gabung)
+				df5 = df4[lala]
+			elif simpan_nilai:
+				gabung = "|".join(simpan_nilai)
+				lala = eval(gabung)
+				df5 = df4[lala]
+			elif simpan_negara:
+				gabung = "|".join(simpan_negara)
+				lala = eval(gabung)
+				df5 = df4[lala]
+			elif simpan_satuan:
+				gabung = "|".join(simpan_satuan)
+				lala = eval(gabung)
+				df5 = df4[lala]
+			elif simpan_nama_produk:
+				gabung = "|".join(simpan_nama_produk)
+				lala = eval(gabung)
+				df5 = df4[lala]
+			elif simpan_item:
+				gabung = "|".join(simpan_item)
+				lala = eval(gabung)
+				df5 = df4[lala]
 
-		def fungsi_and():
-			if simpan_provinsi and simpan_nama_data:
-				
-				gabung1 = "|".join(simpan_provinsi)
-				gabung2 = "("+gabung1+")"
-
-				gabung3 = "|".join(simpan_nama_data)
-				gabung4 = "("+gabung3+")"
-
-				gabung5 = gabung2+"&"+gabung4
-
-				lala = eval(gabung5)
+			elif simpan_kota:
+				gabung = "|".join(simpan_kota)
+				lala = eval(gabung)
 				df5 = df4[lala]
 
 			return df5
 
+		def fungsi_and():			
+				
+			gabung1 = "|".join(simpan_provinsi)
+			gabung2 = "("+gabung1+")"
+
+			gabung3 = "|".join(simpan_nama_data)
+			gabung4 = "("+gabung3+")"
+
+			gabung5 = "|".join(simpan_waktu)
+			gabung6 = "("+gabung5+")"
+
+			gabung7 = "|".join(simpan_nilai)
+			gabung8 = "("+gabung7+")"
+
+			gabung9 = "|".join(simpan_negara)
+			gabung10 = "("+gabung9+")"
+
+			gabung11 = "|".join(simpan_satuan)
+			gabung12 = "("+gabung11+")"
+
+			gabung13 = "|".join(simpan_nama_produk)
+			gabung14 = "("+gabung13+")"
+
+			gabung15 = "|".join(simpan_item)
+			gabung16 = "("+gabung15+")"
+
+			gabung17 = "|".join(simpan_kota)
+			gabung18 = "("+gabung17+")"
+
+			if simpan_provinsi and simpan_nama_data and simpan_waktu and simpan_nilai and simpan_negara and simpan_satuan and simpan_nama_produk and simpan_item and simpan_kota:
+				gabung24681012141618 = gabung2+"&"+gabung4+"&"+gabung6+"&"+gabung8+"&"+gabung10+"&"+gabung12+"&"+gabung14+"&"+gabung16+"&"+gabung18
+				lala = eval(gabung24681012141618)
+				df5 = df4[lala]
+
+			elif simpan_provinsi and simpan_nama_data and simpan_waktu and simpan_nilai and simpan_negara and simpan_satuan and simpan_nama_produk and simpan_item:
+				gabung246810121416 = gabung2+"&"+gabung4+"&"+gabung6+"&"+gabung8+"&"+gabung10+"&"+gabung12+"&"+gabung14+"&"+gabung16
+				lala = eval(gabung246810121416)
+				df5 = df4[lala]
+
+			elif simpan_provinsi and simpan_nama_data and simpan_waktu and simpan_nilai and simpan_negara and simpan_satuan and simpan_nama_produk:
+				gabung2468101214 = gabung2+"&"+gabung4+"&"+gabung6+"&"+gabung8+"&"+gabung10+"&"+gabung12+"&"+gabung14
+				lala = eval(gabung2468101214)
+				df5 = df4[lala]
+
+			elif simpan_provinsi and simpan_nama_data and simpan_waktu and simpan_nilai and simpan_negara and simpan_satuan:
+				gabung24681012 = gabung2+"&"+gabung4+"&"+gabung6+"&"+gabung8+"&"+gabung10+"&"+gabung12
+				lala = eval(gabung24681012)
+				df5 = df4[lala]
+
+			elif simpan_provinsi and simpan_nama_data and simpan_waktu and simpan_nilai and simpan_negara:
+				gabung246810 = gabung2+"&"+gabung4+"&"+gabung6+"&"+gabung8+"&"+gabung10
+				lala = eval(gabung246810)
+				df5 = df4[lala]
+				print(gabung246810)
+
+			elif simpan_provinsi and simpan_nama_data and simpan_waktu and simpan_nilai:
+				gabung2468 = gabung2+"&"+gabung4+"&"+gabung6+"&"+gabung8
+				lala = eval(gabung2468)
+				df5 = df4[lala]
+
+			elif simpan_provinsi and simpan_nama_data and simpan_waktu:
+				gabung246 = gabung2+"&"+gabung4+"&"+gabung6
+				lala = eval(gabung246)
+				df5 = df4[lala]
+			
+			elif simpan_provinsi and simpan_nama_data:
+				gabung24 = gabung2+"&"+gabung4
+				lala = eval(gabung24)
+				df5 = df4[lala]
+
+			
+			return df5
 
 
 		cekBeda = True
@@ -425,10 +630,6 @@ def download():
 			df5 = fungsi_and()
 
 		
-		
-	
-
-
 	return df5.to_csv("tesflask.csv", index = False)
 	# return simpan_provinsi
 
