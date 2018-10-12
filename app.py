@@ -1408,7 +1408,7 @@ def download():
 
 
 					
-					return df5.to_csv("tesflask.csv", index = False)
+					# return df5.to_csv("tesflask.csv", index = False)
 
 
 				cekBeda = True
@@ -1713,41 +1713,432 @@ def download():
 					gabung = "|".join(simpan_provinsi)
 					lala = eval(gabung)
 					df5 = df4[lala]
+
+					if sortx:
+						split_garis_sortx = sortx.split("|") #['Provinsi:ASC', 'Waktu:ASC', 'Nama Data:ASC']
+
+						sort_kiri = []
+						sort_kanan = []
+						for split_sort in split_garis_sortx:
+							split_colon_sort = split_sort.split(":")
+							sort_kiri.append(" ".join(split_colon_sort[0].split("+")))
+							sort_kanan.append(" ".join(split_colon_sort[1].lower().split("+")))
+
+						sort_kanan_rubah_simpan = []
+						for sort_kanan_rubah in sort_kanan:
+							if sort_kanan_rubah == "asc":
+								sort_kanan_rubah = True
+							elif sort_kanan_rubah == "desc":
+								sort_kanan_rubah = False
+
+							sort_kanan_rubah_simpan.append(sort_kanan_rubah)
+
+						df5 = df5.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
+
+						sort_kiri = []
+						sort_kanan = []
+						sort_kanan_rubah_simpan = []
+
+
+						if limitx:
+							df5 = df5.head(int(limitx))
+							df5.to_csv("tesflask.csv", index = False)
+
+						else:
+							df5.to_csv("tesflask.csv", index = False)
+
+					
+					elif limitx:
+						df5 = df5.head(int(limitx))
+						df5.to_csv("tesflask.csv", index = False)
+
+
+					else:
+						df5.to_csv("tesflask.csv", index = False)
+
 				elif simpan_nama_data:
 					gabung = "|".join(simpan_nama_data)
 					lala = eval(gabung)
 					df5 = df4[lala]
+
+					if sortx:
+						split_garis_sortx = sortx.split("|") #['Provinsi:ASC', 'Waktu:ASC', 'Nama Data:ASC']
+
+						sort_kiri = []
+						sort_kanan = []
+						for split_sort in split_garis_sortx:
+							split_colon_sort = split_sort.split(":")
+							sort_kiri.append(" ".join(split_colon_sort[0].split("+")))
+							sort_kanan.append(" ".join(split_colon_sort[1].lower().split("+")))
+
+						sort_kanan_rubah_simpan = []
+						for sort_kanan_rubah in sort_kanan:
+							if sort_kanan_rubah == "asc":
+								sort_kanan_rubah = True
+							elif sort_kanan_rubah == "desc":
+								sort_kanan_rubah = False
+
+							sort_kanan_rubah_simpan.append(sort_kanan_rubah)
+
+						df5 = df5.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
+
+						sort_kiri = []
+						sort_kanan = []
+						sort_kanan_rubah_simpan = []
+
+
+						if limitx:
+							df5 = df5.head(int(limitx))
+							df5.to_csv("tesflask.csv", index = False)
+
+						else:
+							df5.to_csv("tesflask.csv", index = False)
+
+					
+					elif limitx:
+						df5 = df5.head(int(limitx))
+						df5.to_csv("tesflask.csv", index = False)
+
+
+					else:
+						df5.to_csv("tesflask.csv", index = False)
+
+
 				elif simpan_waktu:
 					gabung = "|".join(simpan_waktu)
 					lala = eval(gabung)
 					df5 = df4[lala]
+
+					if sortx:
+						split_garis_sortx = sortx.split("|") #['Provinsi:ASC', 'Waktu:ASC', 'Nama Data:ASC']
+
+						sort_kiri = []
+						sort_kanan = []
+						for split_sort in split_garis_sortx:
+							split_colon_sort = split_sort.split(":")
+							sort_kiri.append(" ".join(split_colon_sort[0].split("+")))
+							sort_kanan.append(" ".join(split_colon_sort[1].lower().split("+")))
+
+						sort_kanan_rubah_simpan = []
+						for sort_kanan_rubah in sort_kanan:
+							if sort_kanan_rubah == "asc":
+								sort_kanan_rubah = True
+							elif sort_kanan_rubah == "desc":
+								sort_kanan_rubah = False
+
+							sort_kanan_rubah_simpan.append(sort_kanan_rubah)
+
+						df5 = df5.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
+
+						sort_kiri = []
+						sort_kanan = []
+						sort_kanan_rubah_simpan = []
+
+
+						if limitx:
+							df5 = df5.head(int(limitx))
+							df5.to_csv("tesflask.csv", index = False)
+
+						else:
+							df5.to_csv("tesflask.csv", index = False)
+
+					
+					elif limitx:
+						df5 = df5.head(int(limitx))
+						df5.to_csv("tesflask.csv", index = False)
+
+
+					else:
+						df5.to_csv("tesflask.csv", index = False)
+
+
 				elif simpan_nilai:
 					gabung = "|".join(simpan_nilai)
 					lala = eval(gabung)
 					df5 = df4[lala]
+
+					if sortx:
+						split_garis_sortx = sortx.split("|") #['Provinsi:ASC', 'Waktu:ASC', 'Nama Data:ASC']
+
+						sort_kiri = []
+						sort_kanan = []
+						for split_sort in split_garis_sortx:
+							split_colon_sort = split_sort.split(":")
+							sort_kiri.append(" ".join(split_colon_sort[0].split("+")))
+							sort_kanan.append(" ".join(split_colon_sort[1].lower().split("+")))
+
+						sort_kanan_rubah_simpan = []
+						for sort_kanan_rubah in sort_kanan:
+							if sort_kanan_rubah == "asc":
+								sort_kanan_rubah = True
+							elif sort_kanan_rubah == "desc":
+								sort_kanan_rubah = False
+
+							sort_kanan_rubah_simpan.append(sort_kanan_rubah)
+
+						df5 = df5.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
+
+						sort_kiri = []
+						sort_kanan = []
+						sort_kanan_rubah_simpan = []
+
+
+						if limitx:
+							df5 = df5.head(int(limitx))
+							df5.to_csv("tesflask.csv", index = False)
+
+						else:
+							df5.to_csv("tesflask.csv", index = False)
+
+					
+					elif limitx:
+						df5 = df5.head(int(limitx))
+						df5.to_csv("tesflask.csv", index = False)
+
+
+					else:
+						df5.to_csv("tesflask.csv", index = False)
+
+
 				elif simpan_negara:
 					gabung = "|".join(simpan_negara)
 					lala = eval(gabung)
 					df5 = df4[lala]
+
+					if sortx:
+						split_garis_sortx = sortx.split("|") #['Provinsi:ASC', 'Waktu:ASC', 'Nama Data:ASC']
+
+						sort_kiri = []
+						sort_kanan = []
+						for split_sort in split_garis_sortx:
+							split_colon_sort = split_sort.split(":")
+							sort_kiri.append(" ".join(split_colon_sort[0].split("+")))
+							sort_kanan.append(" ".join(split_colon_sort[1].lower().split("+")))
+
+						sort_kanan_rubah_simpan = []
+						for sort_kanan_rubah in sort_kanan:
+							if sort_kanan_rubah == "asc":
+								sort_kanan_rubah = True
+							elif sort_kanan_rubah == "desc":
+								sort_kanan_rubah = False
+
+							sort_kanan_rubah_simpan.append(sort_kanan_rubah)
+
+						df5 = df5.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
+
+						sort_kiri = []
+						sort_kanan = []
+						sort_kanan_rubah_simpan = []
+
+
+						if limitx:
+							df5 = df5.head(int(limitx))
+							df5.to_csv("tesflask.csv", index = False)
+
+						else:
+							df5.to_csv("tesflask.csv", index = False)
+
+					
+					elif limitx:
+						df5 = df5.head(int(limitx))
+						df5.to_csv("tesflask.csv", index = False)
+
+
+					else:
+						df5.to_csv("tesflask.csv", index = False)
+
+
 				elif simpan_satuan:
 					gabung = "|".join(simpan_satuan)
 					lala = eval(gabung)
 					df5 = df4[lala]
+
+					if sortx:
+						split_garis_sortx = sortx.split("|") #['Provinsi:ASC', 'Waktu:ASC', 'Nama Data:ASC']
+
+						sort_kiri = []
+						sort_kanan = []
+						for split_sort in split_garis_sortx:
+							split_colon_sort = split_sort.split(":")
+							sort_kiri.append(" ".join(split_colon_sort[0].split("+")))
+							sort_kanan.append(" ".join(split_colon_sort[1].lower().split("+")))
+
+						sort_kanan_rubah_simpan = []
+						for sort_kanan_rubah in sort_kanan:
+							if sort_kanan_rubah == "asc":
+								sort_kanan_rubah = True
+							elif sort_kanan_rubah == "desc":
+								sort_kanan_rubah = False
+
+							sort_kanan_rubah_simpan.append(sort_kanan_rubah)
+
+						df5 = df5.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
+
+						sort_kiri = []
+						sort_kanan = []
+						sort_kanan_rubah_simpan = []
+
+
+						if limitx:
+							df5 = df5.head(int(limitx))
+							df5.to_csv("tesflask.csv", index = False)
+
+						else:
+							df5.to_csv("tesflask.csv", index = False)
+
+					
+					elif limitx:
+						df5 = df5.head(int(limitx))
+						df5.to_csv("tesflask.csv", index = False)
+
+
+					else:
+						df5.to_csv("tesflask.csv", index = False)
+
+
 				elif simpan_nama_produk:
 					gabung = "|".join(simpan_nama_produk)
 					lala = eval(gabung)
 					df5 = df4[lala]
+
+					if sortx:
+						split_garis_sortx = sortx.split("|") #['Provinsi:ASC', 'Waktu:ASC', 'Nama Data:ASC']
+
+						sort_kiri = []
+						sort_kanan = []
+						for split_sort in split_garis_sortx:
+							split_colon_sort = split_sort.split(":")
+							sort_kiri.append(" ".join(split_colon_sort[0].split("+")))
+							sort_kanan.append(" ".join(split_colon_sort[1].lower().split("+")))
+
+						sort_kanan_rubah_simpan = []
+						for sort_kanan_rubah in sort_kanan:
+							if sort_kanan_rubah == "asc":
+								sort_kanan_rubah = True
+							elif sort_kanan_rubah == "desc":
+								sort_kanan_rubah = False
+
+							sort_kanan_rubah_simpan.append(sort_kanan_rubah)
+
+						df5 = df5.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
+
+						sort_kiri = []
+						sort_kanan = []
+						sort_kanan_rubah_simpan = []
+
+
+						if limitx:
+							df5 = df5.head(int(limitx))
+							df5.to_csv("tesflask.csv", index = False)
+
+						else:
+							df5.to_csv("tesflask.csv", index = False)
+
+					
+					elif limitx:
+						df5 = df5.head(int(limitx))
+						df5.to_csv("tesflask.csv", index = False)
+
+
+					else:
+						df5.to_csv("tesflask.csv", index = False)
+
+
 				elif simpan_item:
 					gabung = "|".join(simpan_item)
 					lala = eval(gabung)
 					df5 = df4[lala]
+
+					if sortx:
+						split_garis_sortx = sortx.split("|") #['Provinsi:ASC', 'Waktu:ASC', 'Nama Data:ASC']
+
+						sort_kiri = []
+						sort_kanan = []
+						for split_sort in split_garis_sortx:
+							split_colon_sort = split_sort.split(":")
+							sort_kiri.append(" ".join(split_colon_sort[0].split("+")))
+							sort_kanan.append(" ".join(split_colon_sort[1].lower().split("+")))
+
+						sort_kanan_rubah_simpan = []
+						for sort_kanan_rubah in sort_kanan:
+							if sort_kanan_rubah == "asc":
+								sort_kanan_rubah = True
+							elif sort_kanan_rubah == "desc":
+								sort_kanan_rubah = False
+
+							sort_kanan_rubah_simpan.append(sort_kanan_rubah)
+
+						df5 = df5.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
+
+						sort_kiri = []
+						sort_kanan = []
+						sort_kanan_rubah_simpan = []
+
+
+						if limitx:
+							df5 = df5.head(int(limitx))
+							df5.to_csv("tesflask.csv", index = False)
+
+						else:
+							df5.to_csv("tesflask.csv", index = False)
+
+					
+					elif limitx:
+						df5 = df5.head(int(limitx))
+						df5.to_csv("tesflask.csv", index = False)
+
+
+					else:
+						df5.to_csv("tesflask.csv", index = False)
+
 
 				elif simpan_kota:
 					gabung = "|".join(simpan_kota)
 					lala = eval(gabung)
 					df5 = df4[lala]
 
-				return df5.to_csv("tesflask.csv", index = False)
+					if sortx:
+						split_garis_sortx = sortx.split("|") #['Provinsi:ASC', 'Waktu:ASC', 'Nama Data:ASC']
+
+						sort_kiri = []
+						sort_kanan = []
+						for split_sort in split_garis_sortx:
+							split_colon_sort = split_sort.split(":")
+							sort_kiri.append(" ".join(split_colon_sort[0].split("+")))
+							sort_kanan.append(" ".join(split_colon_sort[1].lower().split("+")))
+
+						sort_kanan_rubah_simpan = []
+						for sort_kanan_rubah in sort_kanan:
+							if sort_kanan_rubah == "asc":
+								sort_kanan_rubah = True
+							elif sort_kanan_rubah == "desc":
+								sort_kanan_rubah = False
+
+							sort_kanan_rubah_simpan.append(sort_kanan_rubah)
+
+						df5 = df5.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
+
+						sort_kiri = []
+						sort_kanan = []
+						sort_kanan_rubah_simpan = []
+
+
+						if limitx:
+							df5 = df5.head(int(limitx))
+							df5.to_csv("tesflask.csv", index = False)
+
+						else:
+							df5.to_csv("tesflask.csv", index = False)
+
+					
+					elif limitx:
+						df5 = df5.head(int(limitx))
+						df5.to_csv("tesflask.csv", index = False)
+
+
+					else:
+						df5.to_csv("tesflask.csv", index = False)
+
 
 			def fungsi_and():			
 					
@@ -1778,49 +2169,421 @@ def download():
 				gabung17 = "|".join(simpan_kota)
 				gabung18 = "("+gabung17+")"
 
-				if simpan_provinsi and simpan_nama_data and simpan_waktu and simpan_nilai and simpan_negara and simpan_satuan and simpan_nama_produk and simpan_item and simpan_kota:
-					gabung24681012141618 = gabung2+"&"+gabung4+"&"+gabung6+"&"+gabung8+"&"+gabung10+"&"+gabung12+"&"+gabung14+"&"+gabung16+"&"+gabung18
-					lala = eval(gabung24681012141618)
+				
+				tes = [] 
+				for kum in kumpulan2:
+					tes.append(kum[0])
+
+				tes1 = np.array(tes)
+				tes2 = np.unique(tes1) #tes2 = ["Nama Data", "Provinsi"]
+
+				gabung_kumpul = []
+				for t in tes2:
+					if t == "Provinsi":
+						gabung_kumpul.append(gabung2)
+					elif t == "Nama Data":
+						gabung_kumpul.append(gabung4)
+					elif t == "Waktu":
+						gabung_kumpul.append(gabung6)
+					elif t == "Nilai":
+						gabung_kumpul.append(gabung8)
+					elif t == "Negara":
+						gabung_kumpul.append(gabung10)
+					elif t == "Satuan":
+						gabung_kumpul.append(gabung12)
+					elif t == "Nama Produk":
+						gabung_kumpul.append(gabung14)
+					elif t == "Item":
+						gabung_kumpul.append(gabung16)
+					elif t == "Kota":
+						gabung_kumpul.append(gabung18)
+
+				if len(tes2) == 2:
+					gabung2 = gabung_kumpul[0]+"&"+gabung_kumpul[1]
+					lala = eval(gabung2)
 					df5 = df4[lala]
 
-				elif simpan_provinsi and simpan_nama_data and simpan_waktu and simpan_nilai and simpan_negara and simpan_satuan and simpan_nama_produk and simpan_item:
-					gabung246810121416 = gabung2+"&"+gabung4+"&"+gabung6+"&"+gabung8+"&"+gabung10+"&"+gabung12+"&"+gabung14+"&"+gabung16
-					lala = eval(gabung246810121416)
-					df5 = df4[lala]
+					if sortx:
+						split_garis_sortx = sortx.split("|") #['Provinsi:ASC', 'Waktu:ASC', 'Nama Data:ASC']
 
-				elif simpan_provinsi and simpan_nama_data and simpan_waktu and simpan_nilai and simpan_negara and simpan_satuan and simpan_nama_produk:
-					gabung2468101214 = gabung2+"&"+gabung4+"&"+gabung6+"&"+gabung8+"&"+gabung10+"&"+gabung12+"&"+gabung14
-					lala = eval(gabung2468101214)
-					df5 = df4[lala]
+						sort_kiri = []
+						sort_kanan = []
+						for split_sort in split_garis_sortx:
+							split_colon_sort = split_sort.split(":")
+							sort_kiri.append(" ".join(split_colon_sort[0].split("+")))
+							sort_kanan.append(" ".join(split_colon_sort[1].lower().split("+")))
 
-				elif simpan_provinsi and simpan_nama_data and simpan_waktu and simpan_nilai and simpan_negara and simpan_satuan:
-					gabung24681012 = gabung2+"&"+gabung4+"&"+gabung6+"&"+gabung8+"&"+gabung10+"&"+gabung12
-					lala = eval(gabung24681012)
-					df5 = df4[lala]
+						sort_kanan_rubah_simpan = []
+						for sort_kanan_rubah in sort_kanan:
+							if sort_kanan_rubah == "asc":
+								sort_kanan_rubah = True
+							elif sort_kanan_rubah == "desc":
+								sort_kanan_rubah = False
 
-				elif simpan_provinsi and simpan_nama_data and simpan_waktu and simpan_nilai and simpan_negara:
-					gabung246810 = gabung2+"&"+gabung4+"&"+gabung6+"&"+gabung8+"&"+gabung10
-					lala = eval(gabung246810)
-					df5 = df4[lala]
+							sort_kanan_rubah_simpan.append(sort_kanan_rubah)
+
+						df5 = df5.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
+
+						sort_kiri = []
+						sort_kanan = []
+						sort_kanan_rubah_simpan = []
+
+
+						if limitx:
+							df5 = df5.head(int(limitx))
+							df5.to_csv("tesflask.csv", index = False)
+
+						else:
+							df5.to_csv("tesflask.csv", index = False)
+
 					
+					elif limitx:
+						df5 = df5.head(int(limitx))
+						df5.to_csv("tesflask.csv", index = False)
 
-				elif simpan_provinsi and simpan_nama_data and simpan_waktu and simpan_nilai:
-					gabung2468 = gabung2+"&"+gabung4+"&"+gabung6+"&"+gabung8
-					lala = eval(gabung2468)
+
+					else:
+						df5.to_csv("tesflask.csv", index = False)
+
+
+				elif len(tes2) == 3:
+					gabung3 = gabung_kumpul[0]+"&"+gabung_kumpul[1]+"&"+gabung_kumpul[2]
+					lala = eval(gabung3)
 					df5 = df4[lala]
 
-				elif simpan_provinsi and simpan_nama_data and simpan_waktu:
-					gabung246 = gabung2+"&"+gabung4+"&"+gabung6
-					lala = eval(gabung246)
+					if sortx:
+						split_garis_sortx = sortx.split("|") #['Provinsi:ASC', 'Waktu:ASC', 'Nama Data:ASC']
+
+						sort_kiri = []
+						sort_kanan = []
+						for split_sort in split_garis_sortx:
+							split_colon_sort = split_sort.split(":")
+							sort_kiri.append(" ".join(split_colon_sort[0].split("+")))
+							sort_kanan.append(" ".join(split_colon_sort[1].lower().split("+")))
+
+						sort_kanan_rubah_simpan = []
+						for sort_kanan_rubah in sort_kanan:
+							if sort_kanan_rubah == "asc":
+								sort_kanan_rubah = True
+							elif sort_kanan_rubah == "desc":
+								sort_kanan_rubah = False
+
+							sort_kanan_rubah_simpan.append(sort_kanan_rubah)
+
+						df5 = df5.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
+
+						sort_kiri = []
+						sort_kanan = []
+						sort_kanan_rubah_simpan = []
+
+
+						if limitx:
+							df5 = df5.head(int(limitx))
+							df5.to_csv("tesflask.csv", index = False)
+
+						else:
+							df5.to_csv("tesflask.csv", index = False)
+
+					
+					elif limitx:
+						df5 = df5.head(int(limitx))
+						df5.to_csv("tesflask.csv", index = False)
+
+
+					else:
+						df5.to_csv("tesflask.csv", index = False)
+
+
+				elif len(tes2) == 4:
+					gabung4 = gabung_kumpul[0]+"&"+gabung_kumpul[1]+"&"+gabung_kumpul[2]+"&"+gabung_kumpul[3]
+					lala = eval(gabung4)
 					df5 = df4[lala]
+
+					if sortx:
+						split_garis_sortx = sortx.split("|") #['Provinsi:ASC', 'Waktu:ASC', 'Nama Data:ASC']
+
+						sort_kiri = []
+						sort_kanan = []
+						for split_sort in split_garis_sortx:
+							split_colon_sort = split_sort.split(":")
+							sort_kiri.append(" ".join(split_colon_sort[0].split("+")))
+							sort_kanan.append(" ".join(split_colon_sort[1].lower().split("+")))
+
+						sort_kanan_rubah_simpan = []
+						for sort_kanan_rubah in sort_kanan:
+							if sort_kanan_rubah == "asc":
+								sort_kanan_rubah = True
+							elif sort_kanan_rubah == "desc":
+								sort_kanan_rubah = False
+
+							sort_kanan_rubah_simpan.append(sort_kanan_rubah)
+
+						df5 = df5.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
+
+						sort_kiri = []
+						sort_kanan = []
+						sort_kanan_rubah_simpan = []
+
+
+						if limitx:
+							df5 = df5.head(int(limitx))
+							df5.to_csv("tesflask.csv", index = False)
+
+						else:
+							df5.to_csv("tesflask.csv", index = False)
+
+					
+					elif limitx:
+						df5 = df5.head(int(limitx))
+						df5.to_csv("tesflask.csv", index = False)
+
+
+					else:
+						df5.to_csv("tesflask.csv", index = False)
+
+
+				elif len(tes2) == 5:
+					gabung5 = gabung_kumpul[0]+"&"+gabung_kumpul[1]+"&"+gabung_kumpul[2]+"&"+gabung_kumpul[3]+"&"+gabung_kumpul[4]
+					lala = eval(gabung5)
+					df5 = df4[lala]
+
+					if sortx:
+						split_garis_sortx = sortx.split("|") #['Provinsi:ASC', 'Waktu:ASC', 'Nama Data:ASC']
+
+						sort_kiri = []
+						sort_kanan = []
+						for split_sort in split_garis_sortx:
+							split_colon_sort = split_sort.split(":")
+							sort_kiri.append(" ".join(split_colon_sort[0].split("+")))
+							sort_kanan.append(" ".join(split_colon_sort[1].lower().split("+")))
+
+						sort_kanan_rubah_simpan = []
+						for sort_kanan_rubah in sort_kanan:
+							if sort_kanan_rubah == "asc":
+								sort_kanan_rubah = True
+							elif sort_kanan_rubah == "desc":
+								sort_kanan_rubah = False
+
+							sort_kanan_rubah_simpan.append(sort_kanan_rubah)
+
+						df5 = df5.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
+
+						sort_kiri = []
+						sort_kanan = []
+						sort_kanan_rubah_simpan = []
+
+
+						if limitx:
+							df5 = df5.head(int(limitx))
+							df5.to_csv("tesflask.csv", index = False)
+
+						else:
+							df5.to_csv("tesflask.csv", index = False)
+
+					
+					elif limitx:
+						df5 = df5.head(int(limitx))
+						df5.to_csv("tesflask.csv", index = False)
+
+
+					else:
+						df5.to_csv("tesflask.csv", index = False)
+
+
+				elif len(tes2) == 6:
+					gabung6 = gabung_kumpul[0]+"&"+gabung_kumpul[1]+"&"+gabung_kumpul[2]+"&"+gabung_kumpul[3]+"&"+gabung_kumpul[4]+"&"+gabung_kumpul[5]
+					lala = eval(gabung6)
+					df5 = df4[lala]
+
+					if sortx:
+						split_garis_sortx = sortx.split("|") #['Provinsi:ASC', 'Waktu:ASC', 'Nama Data:ASC']
+
+						sort_kiri = []
+						sort_kanan = []
+						for split_sort in split_garis_sortx:
+							split_colon_sort = split_sort.split(":")
+							sort_kiri.append(" ".join(split_colon_sort[0].split("+")))
+							sort_kanan.append(" ".join(split_colon_sort[1].lower().split("+")))
+
+						sort_kanan_rubah_simpan = []
+						for sort_kanan_rubah in sort_kanan:
+							if sort_kanan_rubah == "asc":
+								sort_kanan_rubah = True
+							elif sort_kanan_rubah == "desc":
+								sort_kanan_rubah = False
+
+							sort_kanan_rubah_simpan.append(sort_kanan_rubah)
+
+						df5 = df5.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
+
+						sort_kiri = []
+						sort_kanan = []
+						sort_kanan_rubah_simpan = []
+
+
+						if limitx:
+							df5 = df5.head(int(limitx))
+							df5.to_csv("tesflask.csv", index = False)
+
+						else:
+							df5.to_csv("tesflask.csv", index = False)
+
+					
+					elif limitx:
+						df5 = df5.head(int(limitx))
+						df5.to_csv("tesflask.csv", index = False)
+
+
+					else:
+						df5.to_csv("tesflask.csv", index = False)
+
+
+				elif len(tes2) == 7:
+					gabung7 = gabung_kumpul[0]+"&"+gabung_kumpul[1]+"&"+gabung_kumpul[2]+"&"+gabung_kumpul[3]+"&"+gabung_kumpul[4]+"&"+gabung_kumpul[5]+"&"+gabung_kumpul[6]
+					lala = eval(gabung7)
+					df5 = df4[lala]
+
+					if sortx:
+						split_garis_sortx = sortx.split("|") #['Provinsi:ASC', 'Waktu:ASC', 'Nama Data:ASC']
+
+						sort_kiri = []
+						sort_kanan = []
+						for split_sort in split_garis_sortx:
+							split_colon_sort = split_sort.split(":")
+							sort_kiri.append(" ".join(split_colon_sort[0].split("+")))
+							sort_kanan.append(" ".join(split_colon_sort[1].lower().split("+")))
+
+						sort_kanan_rubah_simpan = []
+						for sort_kanan_rubah in sort_kanan:
+							if sort_kanan_rubah == "asc":
+								sort_kanan_rubah = True
+							elif sort_kanan_rubah == "desc":
+								sort_kanan_rubah = False
+
+							sort_kanan_rubah_simpan.append(sort_kanan_rubah)
+
+						df5 = df5.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
+
+						sort_kiri = []
+						sort_kanan = []
+						sort_kanan_rubah_simpan = []
+
+
+						if limitx:
+							df5 = df5.head(int(limitx))
+							df5.to_csv("tesflask.csv", index = False)
+
+						else:
+							df5.to_csv("tesflask.csv", index = False)
+
+					
+					elif limitx:
+						df5 = df5.head(int(limitx))
+						df5.to_csv("tesflask.csv", index = False)
+
+
+					else:
+						df5.to_csv("tesflask.csv", index = False)
+
+
+				elif len(tes2) == 8:
+					gabung8 = gabung_kumpul[0]+"&"+gabung_kumpul[1]+"&"+gabung_kumpul[2]+"&"+gabung_kumpul[3]+"&"+gabung_kumpul[4]+"&"+gabung_kumpul[5]+"&"+gabung_kumpul[6]+"&"+gabung_kumpul[7]
+					lala = eval(gabung8)
+					df5 = df4[lala]
+
+					if sortx:
+						split_garis_sortx = sortx.split("|") #['Provinsi:ASC', 'Waktu:ASC', 'Nama Data:ASC']
+
+						sort_kiri = []
+						sort_kanan = []
+						for split_sort in split_garis_sortx:
+							split_colon_sort = split_sort.split(":")
+							sort_kiri.append(" ".join(split_colon_sort[0].split("+")))
+							sort_kanan.append(" ".join(split_colon_sort[1].lower().split("+")))
+
+						sort_kanan_rubah_simpan = []
+						for sort_kanan_rubah in sort_kanan:
+							if sort_kanan_rubah == "asc":
+								sort_kanan_rubah = True
+							elif sort_kanan_rubah == "desc":
+								sort_kanan_rubah = False
+
+							sort_kanan_rubah_simpan.append(sort_kanan_rubah)
+
+						df5 = df5.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
+
+						sort_kiri = []
+						sort_kanan = []
+						sort_kanan_rubah_simpan = []
+
+
+						if limitx:
+							df5 = df5.head(int(limitx))
+							df5.to_csv("tesflask.csv", index = False)
+
+						else:
+							df5.to_csv("tesflask.csv", index = False)
+
+					
+					elif limitx:
+						df5 = df5.head(int(limitx))
+						df5.to_csv("tesflask.csv", index = False)
+
+
+					else:
+						df5.to_csv("tesflask.csv", index = False)
+
+
+				elif len(tes2) == 9:
+					gabung9 = gabung_kumpul[0]+"&"+gabung_kumpul[1]+"&"+gabung_kumpul[2]+"&"+gabung_kumpul[3]+"&"+gabung_kumpul[4]+"&"+gabung_kumpul[5]+"&"+gabung_kumpul[6]+"&"+gabung_kumpul[7]+"&"+gabung_kumpul[8]
+					lala = eval(gabung9)
+					df5 = df4[lala]
+
+					if sortx:
+						split_garis_sortx = sortx.split("|") #['Provinsi:ASC', 'Waktu:ASC', 'Nama Data:ASC']
+
+						sort_kiri = []
+						sort_kanan = []
+						for split_sort in split_garis_sortx:
+							split_colon_sort = split_sort.split(":")
+							sort_kiri.append(" ".join(split_colon_sort[0].split("+")))
+							sort_kanan.append(" ".join(split_colon_sort[1].lower().split("+")))
+
+						sort_kanan_rubah_simpan = []
+						for sort_kanan_rubah in sort_kanan:
+							if sort_kanan_rubah == "asc":
+								sort_kanan_rubah = True
+							elif sort_kanan_rubah == "desc":
+								sort_kanan_rubah = False
+
+							sort_kanan_rubah_simpan.append(sort_kanan_rubah)
+
+						df5 = df5.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
+
+						sort_kiri = []
+						sort_kanan = []
+						sort_kanan_rubah_simpan = []
+
+
+						if limitx:
+							df5 = df5.head(int(limitx))
+							df5.to_csv("tesflask.csv", index = False)
+
+						else:
+							df5.to_csv("tesflask.csv", index = False)
+
+					
+					elif limitx:
+						df5 = df5.head(int(limitx))
+						df5.to_csv("tesflask.csv", index = False)
+
+
+					else:
+						df5.to_csv("tesflask.csv", index = False)
+
+
 				
-				elif simpan_provinsi and simpan_nama_data:
-					gabung24 = gabung2+"&"+gabung4
-					lala = eval(gabung24)
-					df5 = df4[lala]
-
 				
-				return df5.to_csv("tesflask.csv", index = False)
 
 
 			cekBeda = True
@@ -1863,12 +2626,17 @@ def download():
 
 
 		df5 = df4.sort_values(sort_kiri, ascending = sort_kanan_rubah_simpan)
-		df5.to_csv("tesflask.csv", index = False)
 
-		
 		sort_kiri = []
 		sort_kanan = []
 		sort_kanan_rubah_simpan = []
+
+		if limitx:
+			df5 = df5.head(int(limitx))
+			df5.to_csv("tesflask.csv", index = False)
+
+		else:
+			df5.to_csv("tesflask.csv", index = False)
 
 
 #####################################################################################################
@@ -1881,7 +2649,6 @@ def download():
 		df5 = df4.head(int(limitx))
 		df5.to_csv("tesflask.csv", index = False)
 
-
 #####################################################################################################
 #####################################################################################################
 #####################################################################################################
@@ -1891,13 +2658,9 @@ def download():
 	else:
 		df4.to_csv("tesflask.csv", index = False)
 
-	asd = "BERHASIL"
-	return asd
-	# return df5.to_csv("tesflask.csv", index = False)
 
-	# jadiin json
-
-
+	return "Berhasil"
+	
 if __name__ == '__main__':
 	app.run(host= '0.0.0.0',debug = True)
 
