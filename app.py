@@ -278,7 +278,7 @@ def download():
 
 		tampung_sementara.append(df3)
 
-	df4 = pd.concat(tampung_sementara)
+	df4 = pd.concat(tampung_sementara) #df4 adalah dataframe seluruhnya tanpa filter
 
 
 #####################################################################################################
@@ -2661,6 +2661,7 @@ def download():
 
 	return "Berhasil"
 	
+
 if __name__ == '__main__':
 	app.run(host= '0.0.0.0',debug = True)
 
